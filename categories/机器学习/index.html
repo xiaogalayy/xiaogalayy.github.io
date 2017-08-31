@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Probability Calibration | Data Playground</title>
+  <title>Category: 机器学习 | Data Playground</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 背景介绍在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。 我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一">
-<meta name="keywords" content="综合">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Probability Calibration">
-<meta property="og:url" content="http://yoursite.com/2017/08/31/Probability-Calibration/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Data Playground">
+<meta property="og:url" content="http://yoursite.com/categories/机器学习/index.html">
 <meta property="og:site_name" content="Data Playground">
-<meta property="og:description" content="1. 背景介绍在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。 我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一">
-<meta property="og:updated_time" content="2017-08-31T04:33:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Probability Calibration">
-<meta name="twitter:description" content="1. 背景介绍在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。 我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一">
+<meta name="twitter:title" content="Data Playground">
   
     <link rel="alternative" href="/atom.xml" title="Data Playground" type="application/atom+xml">
   
@@ -148,63 +143,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Probability-Calibration" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Probability Calibration
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/08/31/Probability-Calibration/" class="archive-article-date">
+  	<time datetime="2017-08-31T04:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/08/31/Probability-Calibration/">Probability Calibration</a>
     </h1>
   
 
-        
-        <a href="/2017/08/31/Probability-Calibration/" class="archive-article-date">
-  	<time datetime="2017-08-31T04:23:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1. 背景介绍"></a>1. 背景介绍</h3><p>在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。</p>
-<p>我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一下，当我们使用朴素贝叶斯分类器时，我们将某测试样本属于各种类别的概率全部计算出来，选择概率最大的类别作为该测试样本的预测标签，对应的概率可以视为一个得分；当我们使用支持向量机时，我们将某测试样本的属性代入求出的分隔超平面上，预测出该测试样本对应的标签。或可将该测试样本与分隔超平面的距离作为得分的函数，即距离越大，分数越高，属于对应类别的概率越大。然而，这两个分类器给出的所谓“得分”并不能很好地预测属于对应类别的概率。</p>
-<p>如果一个得分函数S(x)是预测概率的较好估计，它应该满足以下条件。对于一系列测试样本，我们的平均得分S(x)应该与测试样本的真实属于某类别的概率比较接近。我们可以用可靠性图（Reliability Plot）来直观地帮助我们判断预测的概率和真实概率之间的差距。一般而言，在可靠性图中，每个点的横坐标为得分函数S(x)，纵坐标为经验的测试数据的概率，图中的直线为y=x，可用作参考。</p>
-<p>在图中，我们可以发现，虽然可靠性图中的点在直线y=x周围起起伏伏，然而，倒也满足这样的条件，如果S(xi) &lt;= S(xj)，那么r(xi) &lt;= r(xj)。由于有此优良性质，我们考虑将得分函数S(x)映射到经验的概率估计值。这一过程，我们称为概率校准。也即找到这样一个映射函数，满足P(c|x) = f(S(x))。</p>
-<h3 id="2-映射函数"><a href="#2-映射函数" class="headerlink" title="2. 映射函数"></a>2. 映射函数</h3><p>在实际应用中，一般有两种形式的映射函数可供参考。一种为保序回归，另一种为Platt Scaling。</p>
-<p>**(1) 保序回归</p>
-<p>保序回归的应用背景之一为临床试验研究药物在不同剂量水平下的毒性，以得到最大耐受剂量（MTD）。固定K个递增的剂量水平，我们的假设为随着剂量的上升，药物的毒性应该是非递减的。然而，在实际临床实验中，由于各个剂量水平下，实验个体对于毒性反应的比例可能受各类因素影响，不一定呈现递增的毒性反应。因而，我们需要采用保序回归方法。</p>
-<p>给定x1&lt;=x2&lt;=…&lt;=xn, t = 1, 2, …, n</p>
-<p>sigma(yit - y_it)^2</p>
-<p>我们关注x1, …, xn的排序，而非它们具体的取值</p>
-<p>该回归问题的目标为寻找一个非递减的函数来最好地预测回归的响应变量。</p>
-<ul>
-<li>Pool-Adjacent-Violators Algorithm (PAVA)</li>
-</ul>
-<p>算法是解决单调性回归问题的一种较为简单的非参数方法。假设，我们按照自变量的顺序将数据排序，得到以下序列组（xi, yi）, i = 1, …, n。</p>
-<p>(a) step=1, z1 = y1</p>
-<p>(b) step=2, if y2&lt;z1, then s1 = y1 + y2, z1 = z2 = s1/2; else z2 = y2<br>…</p>
-<p>(k) step = k, if yk&lt;zk-1, then sm = yj + yj+1 + … + yk, zj = zj+1=…=zk=sm/(k-j+1); else zk = yk</p>
-<p>举例：</p>
-<blockquote>
-<p>x = [1, 2, 3, 5]; y = [2, 4, 6, 7]; z = [2, 4, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 6, 7]; z = [5, 5, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 2, 7]; z = [4, 4, 4, 7]</p>
-</blockquote>
-<p>**(2) Platt Scaling</p>
-<p>Platt scaling最早的引入是一种为了校正SVM概率的方法，可以使得SVM的输出空间从[-∞, +∞]映射到[0, 1]。具体的目标为，找到一个sigmoid函数的参数使得训练集上的似然函数最大。函数如下所示：</p>
-<p>$$p(c|s) = \frac{1}{1+{\rm e}^(As+B)} $$</p>
-<p>其中，p(c|s) 为某个测试样本属于类别c的概率，s为该测试样本在分类器的得分，A和B是函数的参数。</p>
-<p>另外，Friedman, Hastie, 和Tibshirani提出Logistic correction来校正Boosted模型。</p>
-<h3 id="3-评判标准"><a href="#3-评判标准" class="headerlink" title="3. 评判标准"></a>3. 评判标准</h3><p>** Brier Score<br>在N次预测中，Brier score是均方误差，衡量的是(1)对于测试样本i属于类别c的预测概率(2)实际结果，两者之间的均方误差。因而，对于一系列的预测而言，Brier score越低，说明预测的概率越准确。Brier score的适用范围为二元属性类别的预测情况，不适用于定序（或超过两种类别）的预测。</p>
-<p>Python Sklearn Application</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -216,7 +184,7 @@
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -229,107 +197,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/31/Probability-Calibration/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2017/05/29/How-to-build-up-a-hexo-blog-on-Mac/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">How to build a hexo blog on Mac</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Probability-Calibration" data-title="Probability Calibration" data-url="http://yoursite.com/2017/08/31/Probability-Calibration/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -352,10 +230,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
