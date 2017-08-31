@@ -180,14 +180,14 @@
 <li>Pool-Adjacent-Violators Algorithm (PAVA)</li>
 </ul>
 <p>PAVA算法是解决单调性回归问题的一种较为简单的非参数方法。假设，我们按照自变量的顺序将数据排序，得到以下序列组$(x_i, y_i), i = 1, …, n.$</p>
-<p>step=1, $z_1 = y_1$<br>step=2, if $y_2&lt;z_1$, then $s_1 = y_1 + y_2, z_1 = z_2 = s_1/2$; else $z_2 = y_2$<br>…<br>step = k, if $y_k&lt;z_k-1$, then $s_m = y<em>j + y</em>{j+1} + … + y<em>k, zj = z</em>{j+1}=…=z_k=s_m/(k-j+1)$; else $z_k = y_k$</p>
+<p>step=1, $z_1 = y_1$<br>step=2, if $y_2&lt;z_1$, then $s_1 = y_1 + y_2, z_1 = z_2 = s_1/2; else z_2 = y_2$<br>…<br>step = k, if $y_k&lt;z_k-1$, then $s_m = y<em>j + y</em>{j+1} + … + y<em>k, zj = z</em>{j+1}=…=z_k=s_m/(k-j+1)$; else $z_k = y_k$</p>
 <p>举例：</p>
 <blockquote>
 <p>x = [1, 2, 3, 5]; y = [2, 4, 6, 7]; z = [2, 4, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 6, 7]; z = [5, 5, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 2, 7]; z = [4, 4, 4, 7]</p>
 </blockquote>
 <p><strong>(2) Platt Scaling</strong></p>
 <p>Platt scaling最早的引入是一种为了校正SVM概率的方法，可以使得SVM的输出空间从[-∞, +∞]映射到[0, 1]。具体的目标为，找到一个sigmoid函数的参数使得训练集上的似然函数最大。函数如下所示：</p>
-<p>$$p(c|s) = \frac{1}{1+{\rm e}^{(As+B)} $$</p>
+<p>$$ p(c|s) = \frac{1}{1+{\rm e}^{(As+B)} $$</p>
 <p>其中，p(c|s) 为某个测试样本属于类别c的概率，s为该测试样本在分类器的得分，A和B是函数的参数。</p>
 <p>另外，Friedman, Hastie, 和Tibshirani提出Logistic correction来校正Boosted模型。</p>
 <h3 id="3-评判标准"><a href="#3-评判标准" class="headerlink" title="3. 评判标准"></a>3. 评判标准</h3><p><strong>Brier Score</strong><br>在N次预测中，Brier score是均方误差，衡量的是<br>(1)对于测试样本i属于类别c的预测概率<br>(2)实际结果<br>两者之间的均方误差。因而，对于一系列的预测而言，Brier score越低，说明预测的概率越准确。Brier score的适用范围为二元属性类别的预测情况，不适用于定序（或超过两种类别）的预测。</p>
