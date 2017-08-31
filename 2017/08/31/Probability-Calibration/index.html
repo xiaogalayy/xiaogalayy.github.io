@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/31/Probability-Calibration/index.html">
 <meta property="og:site_name" content="Data Playground">
 <meta property="og:description" content="1. 背景介绍在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。 我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一">
-<meta property="og:updated_time" content="2017-08-31T04:43:57.000Z">
+<meta property="og:updated_time" content="2017-08-31T04:49:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Probability Calibration">
 <meta name="twitter:description" content="1. 背景介绍在许多情况下，我们可以得到这样一个分类器，它能够预测某测试样本的分类标签，然而，却无法一致地给出相对应的该测试样本属于类别c的概率估计P(c|x)。有些时候，该分类器会提供一个得分，暂且记为S(x)，其中S(x)属于[0, 1]之间。但是，这样的得分并不能够很好地预测概率。 我们可以举出几个上述描述的分类器，比如朴素贝叶斯（Naive Bayes）和支持向量机（SVM）。让我们回忆一">
@@ -183,14 +183,14 @@
 <li>Pool-Adjacent-Violators Algorithm (PAVA)</li>
 </ul>
 <p>PAVA算法是解决单调性回归问题的一种较为简单的非参数方法。假设，我们按照自变量的顺序将数据排序，得到以下序列组（xi, yi）, i = 1, …, n。</p>
-<p>step=1, z1 = y1<br>step=2, if y2&lt;z1, then s1 = y1 + y2, z1 = z2 = s1/2; else z2 = y2<br>…<br>step = k, if yk&lt;zk-1, then sm = yj + yj+1 + … + yk, zj = zj+1=…=zk=sm/(k-j+1); else zk = yk</p>
+<p>step=1, $z<em>\1 = y</em>\1$<br>step=2, if y2&lt;z1, then s1 = y1 + y2, z1 = z2 = s1/2; else z2 = y2<br>…<br>step = k, if yk&lt;zk-1, then sm = yj + yj+1 + … + yk, zj = zj+1=…=zk=sm/(k-j+1); else zk = yk</p>
 <p>举例：</p>
 <blockquote>
 <p>x = [1, 2, 3, 5]; y = [2, 4, 6, 7]; z = [2, 4, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 6, 7]; z = [5, 5, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 2, 7]; z = [4, 4, 4, 7]</p>
 </blockquote>
 <p><strong>(2) Platt Scaling</strong></p>
 <p>Platt scaling最早的引入是一种为了校正SVM概率的方法，可以使得SVM的输出空间从[-∞, +∞]映射到[0, 1]。具体的目标为，找到一个sigmoid函数的参数使得训练集上的似然函数最大。函数如下所示：</p>
-<p>$$p(c|s) = \frac{1}{1+{\rm e}^(As+B)} $$</p>
+<p>$$p(c|s) = \frac{1}{1+{\rm e}^{(As+B)} $$</p>
 <p>其中，p(c|s) 为某个测试样本属于类别c的概率，s为该测试样本在分类器的得分，A和B是函数的参数。</p>
 <p>另外，Friedman, Hastie, 和Tibshirani提出Logistic correction来校正Boosted模型。</p>
 <h3 id="3-评判标准"><a href="#3-评判标准" class="headerlink" title="3. 评判标准"></a>3. 评判标准</h3><p><strong>Brier Score</strong><br>在N次预测中，Brier score是均方误差，衡量的是<br>(1)对于测试样本i属于类别c的预测概率<br>(2)实际结果<br>两者之间的均方误差。因而，对于一系列的预测而言，Brier score越低，说明预测的概率越准确。Brier score的适用范围为二元属性类别的预测情况，不适用于定序（或超过两种类别）的预测。</p>
