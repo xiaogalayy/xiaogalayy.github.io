@@ -187,6 +187,7 @@
 <blockquote>
 <p>x = [1, 2, 3, 5]; y = [2, 4, 6, 7]; z = [2, 4, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 6, 7]; z = [5, 5, 6, 7]<br>x = [1, 2, 3, 5]; y = [6, 4, 2, 7]; z = [4, 4, 4, 7]</p>
 </blockquote>
+<p><img src="/2017/08/31/Probability-Calibration/isotonic_regression.png" alt="music"></p>
 <p><strong>(2) Platt Scaling</strong></p>
 <p>Platt scaling最早的引入是一种为了校正SVM概率的方法，可以使得SVM的输出空间从[-∞, +∞]映射到[0, 1]。具体的目标为，找到一个sigmoid函数的参数使得训练集上的似然函数最大。函数如下所示：</p>
 <p>$$P(c|s) = \frac{1}{1+{\rm e}^{As+B}}$$</p>
