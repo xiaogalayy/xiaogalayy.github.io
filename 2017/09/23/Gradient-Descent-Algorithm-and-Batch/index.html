@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Hexo | Data Playground</title>
+  <title>Gradient Descent Algorithm and Batch | Data Playground</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Data Playground">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+  <meta name="description" content="梯度下降法（Gradient Descent Algorithms），我们似乎都知道。同时，在深度学习中，大家对于Batch这个词并不陌生。我第一次听到是在一个技术分享会上面，嘉宾说“大家对Batch size的选择嘛，一般都是64之类的”，不明觉厉。今天，就来总结一下，当我们在谈论Batch的时候，我们究竟再说点什么。 1. 梯度下降法在深度学习里面，梯度下降法是一种比较常见的优化求解算法。根据">
+<meta name="keywords" content="DeepLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradient Descent Algorithm and Batch">
+<meta property="og:url" content="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/index.html">
 <meta property="og:site_name" content="Data Playground">
+<meta property="og:description" content="梯度下降法（Gradient Descent Algorithms），我们似乎都知道。同时，在深度学习中，大家对于Batch这个词并不陌生。我第一次听到是在一个技术分享会上面，嘉宾说“大家对Batch size的选择嘛，一般都是64之类的”，不明觉厉。今天，就来总结一下，当我们在谈论Batch的时候，我们究竟再说点什么。 1. 梯度下降法在深度学习里面，梯度下降法是一种比较常见的优化求解算法。根据">
+<meta property="og:image" content="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_sgd.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_partition.png%20=100x20">
+<meta property="og:image" content="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_minibatch.png.jpg">
+<meta property="og:updated_time" content="2017-09-24T12:28:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data Playground">
+<meta name="twitter:title" content="Gradient Descent Algorithm and Batch">
+<meta name="twitter:description" content="梯度下降法（Gradient Descent Algorithms），我们似乎都知道。同时，在深度学习中，大家对于Batch这个词并不陌生。我第一次听到是在一个技术分享会上面，嘉宾说“大家对Batch size的选择嘛，一般都是64之类的”，不明觉厉。今天，就来总结一下，当我们在谈论Batch的时候，我们究竟再说点什么。 1. 梯度下降法在深度学习里面，梯度下降法是一种比较常见的优化求解算法。根据">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_sgd.png">
   
     <link rel="alternative" href="/atom.xml" title="Data Playground" type="application/atom+xml">
   
@@ -143,48 +152,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Gradient-Descent-Algorithm-and-Batch" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/29/How-to-build-up-a-hexo-blog-on-Mac/" class="archive-article-date">
-  	<time datetime="2017-05-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/29/How-to-build-up-a-hexo-blog-on-Mac/">How to build a hexo blog on Mac</a>
+    <h1 class="article-title" itemprop="name">
+      Gradient Descent Algorithm and Batch
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/23/Gradient-Descent-Algorithm-and-Batch/" class="archive-article-date">
+  	<time datetime="2017-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>梯度下降法（Gradient Descent Algorithms），我们似乎都知道。同时，在深度学习中，大家对于Batch这个词并不陌生。我第一次听到是在一个技术分享会上面，嘉宾说“大家对Batch size的选择嘛，一般都是64之类的”，不明觉厉。今天，就来总结一下，当我们在谈论Batch的时候，我们究竟再说点什么。</p>
+<h3 id="1-梯度下降法"><a href="#1-梯度下降法" class="headerlink" title="1. 梯度下降法"></a>1. 梯度下降法</h3><p>在深度学习里面，梯度下降法是一种比较常见的优化求解算法。根据在优化更新参数时，每次选取的样本的数量，我们将梯度下降法，具体地分为以下三类。</p>
+<blockquote>
+<ul>
+<li>批量梯度下降法 （Batch Gradient Descent）</li>
+<li>小批量梯度下降法 （Mini-batch Gradient Descent）</li>
+<li>随机梯度下降法（Stochastic Gradient Descent）</li>
+</ul>
+</blockquote>
+<h3 id="2-批量梯度下降法"><a href="#2-批量梯度下降法" class="headerlink" title="2. 批量梯度下降法"></a>2. 批量梯度下降法</h3><p>批量梯度下降法（Batch Gradient Descent），第一眼不明觉厉，看着并不知道这个方法是什么。其实，批量梯度下降法，就是最最普通的梯度下降法，也即在优化更新参数的时候，我们每次选取的样本数量为所有的样本。<br>具体地，假设$ X = [X^{(1)}, X^{(2)}, …, X^{(m)}]$, $Y = [Y^{(1)}, Y^{(2)}, …, Y^{(m)}]$，其中，$ X^{(i)}$ 为第 $i$ 个训练样本的维度为$n_{x}$预测变量，$ Y^{(i)}$ 为第 $i$ 个训练样本的响应变量，$ m $ 为样本总数。<br>每轮参数迭代的时候，批量梯度下降法把所有的训练样本 $(X, Y)$ 都考虑进去一起计算。<br>缺点，每个迭代训练的时间较长，效率较低。</p>
+<h3 id="3-随机梯度下降法"><a href="#3-随机梯度下降法" class="headerlink" title="3. 随机梯度下降法"></a>3. 随机梯度下降法</h3><p>随机梯度下降法（Stochastic Gradient Descent），指每次参与参数迭代的样本量只有一个。<br>缺点，每次训练的时候，只采用一个训练样本，一个训练样本会带来过多的随机性，不能保证训练时候的损失函数可以收敛，即便收敛，也需要耗费比其他方法更久的迭代次数；同时，就没有了每个iteration训练时，向量化的操作的便捷性。<br><img src="/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_sgd.png" alt=""></p>
+<h3 id="4-小批量梯度下降法"><a href="#4-小批量梯度下降法" class="headerlink" title="4. 小批量梯度下降法"></a>4. 小批量梯度下降法</h3><p>小批量梯度下降法（Mini-batch Gradient Descent）的每轮迭代的样本量较小，因而，称冠上小批量（mini-batch）的名称。具体地，将所有的训练样本分成等量的小样本（当然，最后剩下的那份并不苛求和其他小样本的样本容量相等），每轮参数迭代的时候，都在各个小样本上面训练。其中，等量 的小样本的样本容量称为批量大小（Batch size），这是一个对于模型而言的超参数（hyper parameter），可以去调整（tune）。通常用的batch size是 $64$ 。<br>具体地，假设$ X = [X^{(1)}, X^{(2)}, …, X^{(m)}]$, $Y = [Y^{(1)}, Y^{(2)}, …, Y^{(m)}]$，其中，$ X^{(i)}$ 为第 $i$ 个训练样本的维度为$n_{x}$预测变量，$ Y^{(i)}$ 为第 $i$ 个训练样本的响应变量，$ m $ 为样本总数。设Batch size为 $m_1$，即可以记每一个小样本$ X^{\lbrace k \rbrace} = [X^{(k)}, X^{(k+1)}, …, X^{(k-1+m_1)}]$，即到时迭代参数的时候，就在每个 $ X^{\lbrace k \rbrace}$ 上面去迭代。<br><img src="/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_partition.png =100x20" alt=""></p>
+<p>小批量梯度下降法的应用场景为当样本量较大时，可以考虑使用小批量梯度下降法，具体的batch size可以选择$2^k, k = 6, 7, 8, 9, 10.$ 即$64, 128, 256, 512, 1024$；<br>当样本量 $m&lt;2000$ 时，使用批量梯度下降法（Batch Gradient Descent）。</p>
+<p><img src="/2017/09/23/Gradient-Descent-Algorithm-and-Batch/kiank_minibatch.png.jpg" alt=""></p>
+<p>需要注意：</p>
+<ul>
+<li>做小批量梯度下降法的时候，首先需要将样本打散，防止样本内部的某些结构性干扰后续参数迭代训练。</li>
+<li>全局只用到一次参数的初始化。即，最开始的时候需要做一次参数初始化，然后，开始在$ X^{\lbrace 1 \rbrace} $上面做训练，经过迭代以后，得到参数，假设是 $w_1, b_1$ ，然后，将 $w_1, b_1$ 的值带入到$ X^{\lbrace 2 \rbrace} $ 的训练中去，经过迭代得到 $w_2, b_2$ ，以此往后。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepLearning</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -197,17 +223,107 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/08/31/Probability-Calibration/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Probability Calibration</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Gradient-Descent-Algorithm-and-Batch" data-title="Gradient Descent Algorithm and Batch" data-url="http://yoursite.com/2017/09/23/Gradient-Descent-Algorithm-and-Batch/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -230,9 +346,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
