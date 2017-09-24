@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Data Playground">
 <meta property="og:description" content="从朋友这边了解到了hexo是个快捷的博客搭建平台，很是向往，的确也想记录些日常，放假在家，突然想起来，那就说建就建吧。记录一下过程，以便以后新的入门者可参考。具体步骤包含以下三步：   安装Hexo 本地及git上的博客部署 Hexo博客主题及其他修改   1. 安装Hexo在安装Hexo之前，电脑需要安装好以下两个软件： (1) Git Git就是官网下的安装包，直接安装的。 (2) Node.">
 <meta property="og:image" content="http://yoursite.com/2017/05/29/How-to-build-up-a-hexo-blog-on-Mac/music.jpg">
-<meta property="og:updated_time" content="2017-09-24T12:52:25.000Z">
+<meta property="og:updated_time" content="2017-09-24T13:04:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to build a hexo blog on Mac">
 <meta name="twitter:description" content="从朋友这边了解到了hexo是个快捷的博客搭建平台，很是向往，的确也想记录些日常，放假在家，突然想起来，那就说建就建吧。记录一下过程，以便以后新的入门者可参考。具体步骤包含以下三步：   安装Hexo 本地及git上的博客部署 Hexo博客主题及其他修改   1. 安装Hexo在安装Hexo之前，电脑需要安装好以下两个软件： (1) Git Git就是官网下的安装包，直接安装的。 (2) Node.">
@@ -207,8 +207,9 @@
 </ul>
 <p>Hexo, I am coming ~</p>
 <p><img src="/2017/05/29/How-to-build-up-a-hexo-blog-on-Mac/music.jpg" alt=""></p>
-<h3 id="4-Hexo常见问题"><a href="#4-Hexo常见问题" class="headerlink" title="4. Hexo常见问题"></a>4. Hexo常见问题</h3><p>（后记）记录在使用Hexo过程中，遇见的一些问题：<br><strong>(1) Error: Cannot find module ‘./build/Debug/DTraceProviderBindings’</strong><br>不仅出这个error，运行任何hexo命令只报这个错，然后没有任何反应。在Mac系统上面的，可以考虑运行以下命令<br><code>$ npm uninstall hexo-cli -g</code> # 卸载之前安装的hexo<br><code>$ npm install -g hexo-cli --registry=https://registry.npm.taobao.org</code> # 配置国内Taobao npm数据源重装<br><code>$ npm install</code> # 在blog的根目录下面<br><code>$ hexo server</code> # 运行hexo命令</p>
+<h3 id="4-Hexo常见问题"><a href="#4-Hexo常见问题" class="headerlink" title="4. Hexo常见问题"></a>4. Hexo常见问题</h3><p>（后记）记录在使用Hexo过程中，遇见的一些问题：<br><strong>(1) 运行任何hexo命令，然后没有任何反应。</strong><br>在Mac系统上面的，可以考虑运行以下命令<br><code>$ npm uninstall hexo-cli -g</code> # 卸载之前安装的hexo<br><code>$ npm install -g hexo-cli --registry=https://registry.npm.taobao.org</code> # 配置国内Taobao npm数据源重装<br><code>$ npm install</code> # 在blog的根目录下面<br><code>$ hexo server</code> # 运行hexo命令</p>
 <p><strong>(2) On branch master, nothing to commit, working tree clean</strong><br>明明写了新的博客，在blog的根目录下面使用<br><code>$ hexo deploy</code><br>却被告知“On branch master, nothing to commit, working tree clean”，此时，可以配套运行以下代码<br><code>$ hexo clean</code><br><code>$ hexo deploy</code></p>
+<p><strong>(3) Error: Cannot find module ‘./build/Debug/DTraceProviderBindings’</strong><br>不仅出这个error，</p>
 <p>参考：</p>
 <h5 id="emsp-emsp-1-Hexo官网链接"><a href="#emsp-emsp-1-Hexo官网链接" class="headerlink" title="&emsp;&emsp;1. Hexo官网链接"></a>&emsp;&emsp;<a href="https://hexo.io/docs/index.html" target="_blank" rel="external">1. Hexo官网链接</a></h5><h5 id="emsp-emsp-2-Zipperary’s-blog"><a href="#emsp-emsp-2-Zipperary’s-blog" class="headerlink" title="&emsp;&emsp;2. Zipperary’s blog"></a>&emsp;&emsp;<a href="http://www.zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">2. Zipperary’s blog</a></h5><h5 id="emsp-emsp-3-v2ex"><a href="#emsp-emsp-3-v2ex" class="headerlink" title="&emsp;&emsp;3. v2ex"></a>&emsp;&emsp;<a href="https://www.v2ex.com/t/175940" target="_blank" rel="external">3. v2ex</a></h5><h5 id="emsp-emsp-4-Theme-yilia"><a href="#emsp-emsp-4-Theme-yilia" class="headerlink" title="&emsp;&emsp;4. Theme yilia"></a>&emsp;&emsp;<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">4. Theme yilia</a></h5><h5 id="emsp-emsp-5-Theme-yelee"><a href="#emsp-emsp-5-Theme-yelee" class="headerlink" title="&emsp;&emsp;5. Theme yelee"></a>&emsp;&emsp;<a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="external">5. Theme yelee</a></h5><h5 id="emsp-emsp-6-Pandaman’s-blog"><a href="#emsp-emsp-6-Pandaman’s-blog" class="headerlink" title="&emsp;&emsp;6. Pandaman’s blog"></a>&emsp;&emsp;<a href="http://www.cnblogs.com/Pandaman/p/markdown.html" target="_blank" rel="external">6. Pandaman’s blog</a></h5>
       
